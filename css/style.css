@@ -1,0 +1,474 @@
+/* ===================================
+   1. GENERAL PAGE SETTINGS
+=================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 24px;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: #eaf1ff;
+
+    /* Night sky background */
+    background:
+        radial-gradient(circle at 15% 15%, rgba(80, 120, 190, 0.18), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(95, 75, 160, 0.16), transparent 30%),
+        radial-gradient(2px 2px at 10% 20%, white, transparent 70%),
+        radial-gradient(2px 2px at 35% 12%, white, transparent 70%),
+        radial-gradient(2px 2px at 65% 18%, white, transparent 70%),
+        radial-gradient(2px 2px at 90% 25%, white, transparent 70%),
+        radial-gradient(1px 1px at 75% 55%, white, transparent 70%),
+        linear-gradient(180deg, #071326 0%, #10213d 55%, #1c3150 100%);
+
+    background-attachment: fixed;
+}
+
+
+/* ===================================
+   2. PAGE HEADER
+=================================== */
+
+header {
+    max-width: 1200px;
+    margin: 0 auto 28px;
+    text-align: center;
+}
+
+header h1 {
+    color: #ffffff;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+}
+
+header p {
+    color: #a9bbd5;
+}
+
+
+/* ===================================
+   3. MAIN PAGE LAYOUT
+=================================== */
+
+main {
+    display: grid;
+
+    grid-template-columns:
+        minmax(180px, 0.7fr)
+        minmax(400px, 1.5fr)
+        minmax(280px, 0.9fr);
+
+    grid-template-areas: "legend pyramid information";
+
+    gap: 20px;
+    max-width: 1450px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+#colour-legend {
+    grid-area: legend;
+    align-self: end;
+}
+
+#timeline-pyramid {
+    grid-area: pyramid;
+    padding: 24px 18px;
+}
+
+#information-panel {
+    grid-area: information;
+    padding: 24px;
+}
+
+
+/* ===================================
+   4. GENERAL PANEL APPEARANCE
+=================================== */
+
+#timeline-pyramid,
+#information-panel,
+#colour-legend {
+    background: rgba(15, 30, 55, 0.88);
+    border: 1px solid rgba(145, 175, 220, 0.2);
+    border-radius: 16px;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(70, 110, 180, 0.08);
+
+    backdrop-filter: blur(10px);
+    color: #eaf1ff;
+}
+
+#timeline-pyramid h2,
+#information-panel h2,
+#colour-legend h2 {
+    margin-top: 0;
+    text-align: center;
+    color: #ffffff;
+}
+
+
+/* ===================================
+   5. PYRAMID STRUCTURE
+=================================== */
+
+.pyramid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    width: 100%;
+    padding: 8px 0;
+}
+
+
+/* Shared properties for all five layers */
+
+.pyramid-layer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    min-height: 76px;
+    padding: 16px 24px;
+
+    color: white;
+    text-align: center;
+
+    clip-path: polygon(
+        12% 0,
+        88% 0,
+        100% 100%,
+        0 100%
+    );
+}
+
+
+/* Layer headings */
+
+.pyramid-layer h3 {
+    flex-basis: 100%;
+    margin: 0 0 4px;
+    font-size: 0.95rem;
+}
+
+
+/* ===================================
+   6. INDIVIDUAL PYRAMID LAYERS
+=================================== */
+
+/* Future of AI */
+
+.pyramid-layer.future {
+    width: 220px;
+    height: 180px;
+    min-height: 180px;
+
+    background-color: #7950A1;
+
+    /* Create a triangular shape */
+    clip-path: polygon(
+        50% 0,
+        100% 100%,
+        0 100%
+    );
+
+    /* Arrange heading and button vertically */
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+
+    padding: 0 15px 30px;
+    gap: 5px;
+}
+
+.pyramid-layer.future h3 {
+    flex-basis: auto;
+    margin: 0;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+
+/* Generative AI */
+
+.pyramid-layer.generative {
+    width: 52%;
+    min-width: 250px;
+    background-color: #3977B9;
+}
+
+
+/* Machine Learning */
+
+.pyramid-layer.machine-learning {
+    width: 68%;
+    min-width: 310px;
+    background-color: #319B91;
+}
+
+
+/* Symbolic AI */
+
+.pyramid-layer.symbolic {
+    width: 84%;
+    min-width: 360px;
+    background-color: #D99543;
+}
+
+
+/* Foundations of AI */
+
+.pyramid-layer.foundations {
+    width: 100%;
+    max-width: 650px;
+    background-color: #536779;
+}
+
+
+/* ===================================
+   7. MILESTONE BUTTONS
+=================================== */
+
+.milestone {
+    min-width: 34px;
+    min-height: 34px;
+    padding: 6px 9px;
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+
+    font-size: 0.85rem;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+
+/* Hover effect */
+
+.milestone:hover {
+    transform: translateY(-2px);
+    background-color: white;
+    color: #10213d;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+}
+
+
+/* Keyboard focus */
+
+.milestone:focus-visible {
+    outline: 3px solid #9dc4ff;
+    outline-offset: 3px;
+}
+
+
+/* Selected milestone */
+
+.milestone.active {
+    background-color: white;
+    color: #10213d;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+}
+
+
+/* ===================================
+   8. INFORMATION PANEL
+=================================== */
+
+#milestone-details {
+    color: #c4d2e8;
+}
+
+#milestone-details p {
+    margin-bottom: 12px;
+}
+
+#milestone-details h3 {
+    color: #ffffff;
+}
+
+#milestone-details .detail-label {
+    margin-top: 16px;
+    margin-bottom: 4px;
+    font-weight: bold;
+    color: #9dc4ff;
+}
+
+.placeholder {
+    color: #9aacc6;
+    text-align: center;
+}
+
+
+/* ===================================
+   9. COLOUR LEGEND
+=================================== */
+
+#colour-legend {
+    padding: 24px;
+}
+
+#colour-legend ul {
+    display: grid;
+    gap: 12px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+#colour-legend li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.legend-swatch {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+
+/* Legend colours */
+
+.future-colour {
+    background-color: #7950A1;
+}
+
+.generative-colour {
+    background-color: #3977B9;
+}
+
+.machine-colour {
+    background-color: #319B91;
+}
+
+.symbolic-colour {
+    background-color: #D99543;
+}
+
+.foundations-colour {
+    background-color: #536779;
+}
+
+
+/* ===================================
+   10. FOOTER
+=================================== */
+
+footer {
+    max-width: 1200px;
+    margin: 28px auto 0;
+
+    color: #9aacc6;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+
+/* ===================================
+   11. RESPONSIVE DESIGN
+=================================== */
+
+/* Tablets and smaller laptops */
+
+@media (max-width: 1050px) {
+
+    main {
+        grid-template-columns: 200px minmax(0, 1fr);
+
+        grid-template-areas:
+            "legend pyramid"
+            "information information";
+    }
+
+    #colour-legend {
+        align-self: start;
+    }
+
+}
+
+
+/* Mobile screens */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 16px;
+    }
+
+    main {
+        grid-template-columns: 1fr;
+
+        grid-template-areas:
+            "pyramid"
+            "information"
+            "legend";
+    }
+
+    #timeline-pyramid {
+        padding: 15px 8px;
+    }
+
+    #colour-legend {
+        align-self: stretch;
+    }
+
+    .pyramid-layer {
+        min-width: 0;
+        padding: 14px 12px;
+    }
+
+    .pyramid-layer h3 {
+        font-size: 0.78rem;
+    }
+
+    .pyramid-layer.future {
+        width: 160px;
+        min-width: 160px;
+        height: 150px;
+        min-height: 150px;
+        padding-bottom: 25px;
+    }
+
+    .pyramid-layer.generative {
+        width: 70%;
+    }
+
+    .pyramid-layer.machine-learning {
+        width: 85%;
+    }
+
+    .pyramid-layer.symbolic {
+        width: 95%;
+    }
+
+    .pyramid-layer.foundations {
+        width: 100%;
+    }
+
+    .milestone {
+        min-width: 30px;
+        min-height: 30px;
+        padding: 4px 7px;
+    }
+
+}
